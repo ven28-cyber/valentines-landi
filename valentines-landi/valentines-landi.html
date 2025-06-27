@@ -21,7 +21,7 @@
             padding: 20px;
             text-align: center;
         }
-        #yesButton, #noButton {
+        #noButton, #yesButton {
             font-size: 20px;
             border-radius: 12px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -31,20 +31,20 @@
             cursor: pointer;
             margin: 10px;
         }
-        #yesButton {
+        #noButton {
             background-color: #4CAF50; /* Green */
             color: white;
         }
-        #noButton {
+        #yesButton {
             background-color: #f44336; /* Red */
             color: white;
         }
-        #noButton:disabled {
+        #yesButton:disabled {
             background-color: #ddd;
             color: #666;
             box-shadow: none;
         }
-        #yesButton:hover, #noButton:hover {
+        #noButton:hover, #yesButton:hover {
             box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
 
@@ -67,32 +67,32 @@
 <body>
     <div id="content">
         <h2 id="question">Would you date me?</h2>
+        <button id="noButton">No</button>
         <button id="yesButton">YES</button>
-        <button id="noButton">NO</button>
         <p id="message"></p>
     </div>
 
     <script>
         var noClickCount = 0;
-        document.getElementById('noButton').addEventListener('click', function() { //NOOOOO button
-            noClickCount++;
-            if (noClickCount == 1) {
-                document.getElementById('yesButton').style.fontSize = '30px';
-            } else if (noClickCount == 2) {
+        document.getElementById('noButton').addEventListener('click', function() { //YESSSSS button
+            yesClickCount++;
+            if (yesClickCount == 1) {
+                document.getElementById('noButton').style.fontSize = '30px';
+            } else if (yesClickCount == 2) {
                 this.style.fontSize = '10px';
-                document.getElementById('yesButton').style.fontSize = '40px';
-            } else if (noClickCount == 3) {
-                document.getElementById('yesButton').style.fontSize = '90px';
+                document.getElementById('noButton').style.fontSize = '40px';
+            } else if (yesClickCount == 3) {
+                document.getElementById('noButton').style.fontSize = '90px';
                 this.style.fontSize = '7px';
-            } else if (noClickCount == 4) {
+            } else if (yesClickCount == 4) {
                 this.style.position = 'absolute';
                 this.style.left = Math.random() * window.innerWidth + 'px';
                 this.style.top = Math.random() * window.innerHeight + 'px';
-            } else if (noClickCount >= 5 && noClickCount < 10) {
+            } else if (yesClickCount >= 5 && yesClickCount < 10) {
                 this.style.position = 'absolute';
                 this.style.left = Math.random() * window.innerWidth + 'px';
                 this.style.top = Math.random() * window.innerHeight + 'px';
-            } else if (noClickCount >= 10 && noClickCount < 15) {
+            } else if (yesClickCount >= 10 && yesClickCount < 15) {
                 // Avoid disabling the button
                 // this.disabled = true;
                 this.style.position = 'absolute';
@@ -102,7 +102,7 @@
                 document.getElementById('message').style.position = 'absolute';
                 document.getElementById('message').style.left = this.style.left;
                 document.getElementById('message').style.top = parseFloat(this.style.top) + 50 + 'px';
-            } else if (noClickCount == 15) {
+            } else if (yesClickCount == 15) {
                 document.getElementById('message').innerText = 'Oh No! You broke the button :c';
                 this.disabled = true;
                 this.style.color = grey;
@@ -110,8 +110,8 @@
             }
         });
 
-        document.getElementById('yesButton').addEventListener('click', function() {                 //YESSSS button
-            document.getElementById('question').innerText = 'YIEEEEE SAN DATE NATIN? OTW';
+        document.getElementById('noButton').addEventListener('click', function() {                 //YESSSS button
+            document.getElementById('question').innerText = 'THANK YOUU, BATI NA US';
             for (var i = 0; i < 100; i++) {
                 var heart = document.createElement('div');
                 heart.className = 'heart';
